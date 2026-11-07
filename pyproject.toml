@@ -1,0 +1,24 @@
+[project]
+name = "metaculus-forecasting-bot"
+version = "0.1.0"
+description = "Forecasting bot for the Metaculus FutureEval tournaments, running on Claude Code headless"
+authors = [{ name = "GeiserX" }]
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "forecasting-tools>=0.2.90,<0.4.0",
+    "python-dotenv>=1.0.1,<2",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+]
+
+[tool.uv]
+exclude-newer = "7 days"
+exclude-newer-package = { forecasting-tools = false }
+
+[tool.pytest.ini_options]
+pythonpath = ["."]

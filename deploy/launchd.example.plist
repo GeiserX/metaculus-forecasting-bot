@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- macOS schedule. Replace APP_DIR and STATE_DIR, copy to ~/Library/LaunchAgents/,
+     then: launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/metaculus-bot.plist -->
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>metaculus-bot</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>APP_DIR/run.sh</string>
+    <string>tournament</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict><key>STATE_DIR</key><string>STATE_DIR</string></dict>
+  <!-- every 20 minutes, offset off the hour; questions stay open for 3 hours -->
+  <key>StartCalendarInterval</key>
+  <array>
+    <dict><key>Minute</key><integer>7</integer></dict>
+    <dict><key>Minute</key><integer>27</integer></dict>
+    <dict><key>Minute</key><integer>47</integer></dict>
+  </array>
+  <key>StandardOutPath</key><string>STATE_DIR/logs/launchd.out</string>
+  <key>StandardErrorPath</key><string>STATE_DIR/logs/launchd.err</string>
+  <key>ProcessType</key><string>Background</string>
+</dict>
+</plist>
