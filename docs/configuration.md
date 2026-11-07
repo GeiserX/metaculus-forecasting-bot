@@ -29,4 +29,4 @@ With `LLM_BACKEND=litellm`, `RESEARCH_MODEL` and `FORECAST_MODELS` are litellm m
 | `./run.sh question --url <url>` | One question, for testing; never point it at a live tournament question |
 | `./run.sh metaculus_cup` | The Metaculus Cup (bots are not prize-eligible there) |
 
-Add `--dry-run` to any mode to forecast without posting.
+Add `--dry-run` to forecast without posting. It is refused in `tournament` mode, because previewing forecasts on open tournament questions is against the rules.

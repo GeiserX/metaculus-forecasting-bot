@@ -11,7 +11,7 @@ For each open question that the bot has not forecast yet:
 
 ## Claude Code isolation
 
-Each call runs with a minimal environment (`HOME`, `PATH`, the token), `CLAUDE_CONFIG_DIR` pointing at an empty directory under `$STATE_DIR`, an empty working directory, `--strict-mcp-config`, `--disable-slash-commands`, `--no-session-persistence`, an explicit `--tools` list and a replaced system prompt. Nothing from the user's own Claude Code setup reaches the bot.
+Each call runs with a minimal environment (`HOME`, `PATH`, the token), `CLAUDE_CONFIG_DIR` pointing at a directory of its own under `$STATE_DIR`, its own working directory (both overridable), `--strict-mcp-config`, `--disable-slash-commands`, `--no-session-persistence`, an explicit `--tools` list and a replaced system prompt. Nothing from the user's own Claude Code setup reaches the bot.
 
 ## Logs
 
