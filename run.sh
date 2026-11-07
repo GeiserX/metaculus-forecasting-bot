@@ -17,7 +17,7 @@ export STATE_DIR REPORTS_DIR="$STATE_DIR/reports" COST_LOG="$STATE_DIR/costs.tsv
 MODE="${1:-tournament}"; shift || true
 # Live tournament runs stay off until LIVE=1 is set in the secrets file, which we do only after
 # a dry run of the configured backend has passed. Test modes always run.
-if [ "$MODE" = tournament ] && [ "${LIVE:-0}" != 1 ] && [[ " $* " != *" --dry-run "* ]]; then
+if [ "$MODE" = tournament ] && [ "${LIVE:-0}" != 1 ]; then
   echo "$(date -u +%FT%TZ) skip: LIVE is not 1" >> "$STATE_DIR/logs/skipped.log"; exit 0
 fi
 LOG="$STATE_DIR/logs/$(date -u +%Y-%m-%d).log"

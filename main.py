@@ -555,6 +555,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
     run_mode: Literal["tournament", "metaculus_cup", "test_questions", "question"] = args.mode
 
+    if args.dry_run and run_mode == "tournament":
+        # A dry run here would preview forecasts on open tournament questions, which the
+        # tournament rules forbid. Test with test_questions or a closed question instead.
+        raise SystemExit("--dry-run is not allowed in tournament mode; use --mode test_questions")
     check_environment()
     publish = not args.dry_run
     print_startup_banner(run_mode, will_publish=publish)
