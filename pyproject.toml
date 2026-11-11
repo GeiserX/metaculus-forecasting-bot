@@ -19,6 +19,10 @@ dev = [
 [tool.uv]
 exclude-newer = "7 days"
 exclude-newer-package = { forecasting-tools = false }
+# forecasting-tools caps pillow below 13, and 13.0.0 is the only release with the fixes for
+# GHSA-xvh5-g6gv-559v and the other 2026-10 Pillow advisories. It only calls Image.open,
+# convert and save, which 13 keeps. Remove this once forecasting-tools allows pillow 13.
+override-dependencies = ["pillow>=13.0.0"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
