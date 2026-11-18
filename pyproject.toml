@@ -22,7 +22,10 @@ exclude-newer-package = { forecasting-tools = false }
 # forecasting-tools caps pillow below 13, and 13.0.0 is the only release with the fixes for
 # GHSA-xvh5-g6gv-559v and the other 2026-10 Pillow advisories. It only calls Image.open,
 # convert and save, which 13 keeps. Remove this once forecasting-tools allows pillow 13.
-override-dependencies = ["pillow>=13.0.0"]
+# asknews caps cryptography below 49.0.1 (0.14.10, the newest), and 50.0.0 is the first release
+# with the fix for GHSA-g6cj-pr64-35w5. asknews only uses Fernet, PBKDF2HMAC, hashes and
+# default_backend, which 50 keeps. Remove this once asknews allows cryptography 50.
+override-dependencies = ["pillow>=13.0.0", "cryptography>=50.0.0"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
